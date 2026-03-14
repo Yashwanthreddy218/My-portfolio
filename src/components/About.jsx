@@ -9,6 +9,7 @@ const fadeUp = (delay = 0) => ({
   transition: { duration: 0.55, delay, ease: 'easeOut' },
 })
 
+//this fnction return a html div 
 export default function About() {
   const { theme } = useTheme()
   const accent = theme === 'netflix' ? '#E50914' : '#FF9900'
