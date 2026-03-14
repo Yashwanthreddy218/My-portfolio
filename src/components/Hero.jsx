@@ -2,13 +2,18 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowDown, Download, MapPin, Briefcase } from 'lucide-react'
 import { useTheme } from '../context/ThemeContext'
+import Aurora    from './Aurora'
+import Particles from './Particles'
+import Meteors   from './Meteors'
+import CodeFloat from './CodeFloat'
+import LottieDev from './LottieDev'
 
 const TYPING_WORDS = [
-  'Full Stack Developer',
-  'Java / Spring Boot Expert',
-  'React & Angular Engineer',
-  'Cloud & AWS Practitioner',
-  'Microservices Architect',
+  'Engineering Leader',
+  'Tech Lead · 6 Yrs Experience',
+  'Java / Spring Boot Architect',
+  'Team Builder & Mentor',
+  'Targeting EM / Staff Eng Roles',
 ]
 
 function useTypingEffect(words, speed = 80, pause = 1800) {
@@ -61,14 +66,32 @@ export default function Hero() {
       className="relative min-h-screen flex items-center overflow-hidden"
       style={{ background: heroBg }}
     >
-      {/* Subtle grid bg */}
+      {/* Aurora blobs */}
+      <Aurora
+        colors={['#FF9900', '#E50914', '#a855f7', '#3b82f6']}
+        opacity={0.1}
+      />
+
+      {/* Floating particles */}
+      <Particles count={24} color="#FF9900" maxSize={3} />
+
+      {/* Meteors */}
+      <Meteors count={10} color="#FF9900" />
+
+      {/* Subtle dot grid */}
       <div
-        className="absolute inset-0 opacity-[0.03]"
+        className="absolute inset-0 opacity-[0.025]"
         style={{
-          backgroundImage: 'linear-gradient(rgba(255,255,255,.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.6) 1px, transparent 1px)',
-          backgroundSize: '60px 60px',
+          backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px)',
+          backgroundSize: '36px 36px',
         }}
       />
+
+      {/* Noise */}
+      <div className="noise" />
+
+      {/* Floating code snippets */}
+      <CodeFloat />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-12 w-full pt-20 pb-16">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -128,9 +151,10 @@ export default function Hero() {
               transition={{ delay: 0.6 }}
               className="text-gray-400 text-base leading-relaxed max-w-lg mb-4"
             >
-              6 years crafting scalable enterprise systems — microservices in Spring Boot,
-              modern UIs in React & Angular, and cloud infrastructure on AWS.
-              Currently modernizing state-level apps at <span className="text-white font-medium">Texas Parks & Wildlife</span>.
+              6 years building enterprise systems and leading teams — mentoring devs,
+              driving architecture decisions, and shipping at scale across FAANG, government, and healthcare.
+              Currently leading modernization at <span className="text-white font-medium">Texas Parks & Wildlife</span>.
+              Targeting <span className="text-white font-medium">Engineering Manager · Tech Lead · Staff Engineer</span> roles.
             </motion.p>
 
             <motion.p
@@ -158,7 +182,7 @@ export default function Hero() {
               </a>
               <a
                 href="/resume.pdf"
-                download
+                download="Yashwanth Resume"
                 className="btn-outline"
               >
                 <Download size={16} />
@@ -195,6 +219,10 @@ export default function Hero() {
             className="hidden lg:block"
           >
             <div className="relative">
+              {/* Lottie animation — decorative, positioned above the card */}
+              <div style={{ position: 'absolute', top: '-140px', right: '-40px', zIndex: 0, pointerEvents: 'none', opacity: 0.82 }}>
+                <LottieDev size={240} />
+              </div>
               {/* Main card */}
               <motion.div
                 animate={{ y: [0, -10, 0] }}
@@ -203,15 +231,25 @@ export default function Hero() {
                 style={{ borderColor: `${accent}40` }}
               >
                 <div className="flex items-center gap-3 mb-4">
-                  <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center font-black text-black text-lg"
-                    style={{ background: accent }}
-                  >
-                    YK
+                  <div className="relative flex-shrink-0" style={{ width: '48px', height: '48px' }}>
+                    <img
+                      src="/profile.jpg"
+                      alt="Yashwanth Katta"
+                      style={{
+                        width: '100%', height: '100%',
+                        borderRadius: '50%', objectFit: 'cover', objectPosition: 'top center',
+                        border: `2px solid ${accent}`,
+                      }}
+                    />
+                    <span style={{
+                      position: 'absolute', bottom: '1px', right: '1px',
+                      width: '10px', height: '10px', borderRadius: '50%',
+                      background: '#4ade80', border: '2px solid #1a1a1a',
+                    }} />
                   </div>
                   <div>
                     <p className="text-white font-bold text-sm">Yashwanth Katta</p>
-                    <p className="text-gray-400 text-xs">Full Stack Java Developer</p>
+                    <p className="text-gray-400 text-xs">Engineering Leader · EM / Tech Lead</p>
                   </div>
                 </div>
 

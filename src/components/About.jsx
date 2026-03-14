@@ -31,15 +31,30 @@ export default function About() {
           {/* Bio — spans 2 cols */}
           <motion.div {...fadeUp(0.1)} className="bento-card lg:col-span-2">
             <div className="flex items-center gap-3 mb-4">
-              <div
-                className="w-12 h-12 rounded-xl flex items-center justify-center font-black text-black text-lg flex-shrink-0"
-                style={{ background: accent }}
-              >
-                YK
+              <div className="relative flex-shrink-0" style={{ width: '52px', height: '52px' }}>
+                <img
+                  src="/profile.jpg"
+                  alt="Yashwanth Katta"
+                  style={{
+                    width: '100%', height: '100%',
+                    borderRadius: '50%', objectFit: 'cover', objectPosition: 'top center',
+                    border: `2.5px solid ${accent}`,
+                  }}
+                />
+                <motion.span
+                  animate={{ scale: [1, 1.3, 1] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                  style={{
+                    position: 'absolute', bottom: '1px', right: '1px',
+                    width: '11px', height: '11px', borderRadius: '50%',
+                    background: '#4ade80', border: '2px solid #0d0d0d',
+                    display: 'block',
+                  }}
+                />
               </div>
               <div>
                 <p className="text-white font-bold">Yashwanth Katta</p>
-                <p className="text-sm" style={{ color: accent }}>Full Stack Java Developer</p>
+                <p className="text-sm" style={{ color: accent }}>Engineering Leader · EM / Tech Lead</p>
               </div>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed mb-3">

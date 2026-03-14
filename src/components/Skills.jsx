@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTheme } from '../context/ThemeContext'
+import TechConstellation from './TechConstellation'
 
 const TABS = [
   {
@@ -155,6 +156,22 @@ export default function Skills() {
         >
           {current.skills.length} skills in this category · {TABS.reduce((a, t) => a + t.skills.length, 0)} total across all categories
         </motion.p>
+
+        {/* Tech Constellation */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-40px' }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mt-16"
+        >
+          <p className="section-label mb-2">Tech Ecosystem</p>
+          <h3 className="text-white font-black text-xl mb-2">How It All Connects</h3>
+          <p className="text-gray-500 text-sm mb-8">
+            Every node talks to the others — full-stack, cloud-native, and event-driven.
+          </p>
+          <TechConstellation />
+        </motion.div>
 
       </div>
     </section>
